@@ -27,8 +27,8 @@ const App = () => {
       };
 
     return (
-        <div>
-                  <div className="bg-white w-[420px] h-96 rounded-3xl p-10 flex flex-col">
+        <div className="p-2">
+          <div className="bg-white w-full max-w-[420px] h-96 rounded-3xl p-10 flex flex-col">
           <div className="font-gabarito text-xl">Enter an invoice amount</div>
           <div className="w-full flex justify-center items-center h-full border-b border-[#c0c0c0] relative">
             <input
