@@ -4,7 +4,7 @@ const App = () => {
     const [ price, setPrice ] = useState("")
 
     const handleInputChange = (value) => {
-        let parsedValue = value.replace(/[^0-9.]/g, '');
+        let parsedValue = value.replace(/[^0-9.-]/g, '');
         const dotIndex = parsedValue.indexOf('.');
 
         if (dotIndex !== -1) {
@@ -15,7 +15,7 @@ const App = () => {
         setPrice(parsedValue)
     }
 
-    let money = price === "" ? 0 : parseFloat(price)  ;  
+    let money = (price === "" || price === "-") ? 0 : parseFloat(price)  ;  
     let fixedFee = money === 0 ? 0 : 0.30;
     const stripeRate = 2.9;
     let stripeFee = (money * stripeRate)/100 + fixedFee;
@@ -38,7 +38,7 @@ const App = () => {
               onChange={(e) => handleInputChange(e.target.value)}
               value={price}
             />
-            <span className="absolute font-gabarito left-[6px]">{money === 0 ? "" : "$"}</span>
+            <span className="absolute font-gabarito left-[6px]">{price === "" ? "" : "$"}</span>
           </div>
 
         <div className="w-full flex justify-center items-center h-full">
